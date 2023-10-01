@@ -35,12 +35,13 @@ public class ParticleSys : MonoBehaviour
 
             Material particleMaterial = material;
 
-
+            //поставить слой
             var go = new GameObject("Particle System");
             go.transform.Rotate(angle * i, 90, 0); // Rotate so the system emits upwards.
             go.AddComponent<CollisionEnter>();
             go.transform.parent = this.transform;
             go.transform.position = this.transform.position;
+            go.layer = 7;
             system = go.AddComponent<ParticleSystem>();
             go.GetComponent<ParticleSystemRenderer>().material = particleMaterial;
             var mainModule = system.main;
@@ -48,6 +49,14 @@ public class ParticleSys : MonoBehaviour
             mainModule.startSize = 0.5f;
             mainModule.startSpeed = speed;
             mainModule.maxParticles = 100000;
+
+            var coll = system.collision;
+            coll.enabled = true;
+            coll.collidesWith = 7;
+            coll.type = ParticleSystemCollisionType.World;
+            coll.mode = ParticleSystemCollisionMode.Collision2D;
+            coll.sendCollisionMessages = true;
+            coll.lifetimeLoss = 1.0f;
 
             var emission = system.emission;
             emission.enabled = false;

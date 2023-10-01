@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayerMovement
-{
+
     public class Movement : MonoBehaviour
     {
         public float moveSpeedConst = 5f;
@@ -13,13 +12,16 @@ namespace PlayerMovement
         public Camera cam;
         public float dashTime = 0.1f;
         public float dashCd = 2f;
-
+        public Collider2D hitbox;
+        public SpriteRenderer playerSprite;
+        
 
         Vector2 movement;
         int dashcheck = 0;
         bool candash = true;
         float clicktime = 0;
         float clickdelay = 0.3f;
+
 
 
         void Update()
@@ -117,11 +119,16 @@ namespace PlayerMovement
         }
         IEnumerator DashReturn()
         {
+            hitbox.enabled = false;
+            playerSprite.color = Color.blue;
             yield return new WaitForSeconds(dashTime);
+            hitbox.enabled = true;
+            playerSprite.color = Color.white;
             moveSpeed = moveSpeedConst;
             yield return new WaitForSeconds(dashCd);
             candash = true;
+            
         }
     }
-}
+
 
