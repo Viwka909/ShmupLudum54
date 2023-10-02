@@ -17,19 +17,21 @@ public class ParticleSys : MonoBehaviour
     public float spin_speed;
     private float time;
     public ParticleSystem system;
+
+
     private void Awake()
     {
         Summon();
 
     }
-     private void FixedUpdate()
+    private void FixedUpdate()
     {
         time += Time.fixedDeltaTime;
         transform.rotation = Quaternion.Euler(0, 0, time * spin_speed);
     }
     void Summon()
     {
-        angle = 360f / numer_of_colums;
+        angle = 360 / numer_of_colums;
         for (int i = 0; i < numer_of_colums; i++)
         {
 
@@ -41,7 +43,6 @@ public class ParticleSys : MonoBehaviour
             go.AddComponent<CollisionEnter>();
             go.transform.parent = this.transform;
             go.transform.position = this.transform.position;
-            go.layer = 7;
             system = go.AddComponent<ParticleSystem>();
             go.GetComponent<ParticleSystemRenderer>().material = particleMaterial;
             var mainModule = system.main;
@@ -63,7 +64,7 @@ public class ParticleSys : MonoBehaviour
 
             mainModule.simulationSpace = ParticleSystemSimulationSpace.World;
 
-            
+
 
             var form = system.shape;
             form.enabled = true;
@@ -85,15 +86,15 @@ public class ParticleSys : MonoBehaviour
         foreach (Transform child in transform)
         {
             system = child.GetComponent<ParticleSystem>();
-        // Any parameters we assign in emitParams will override the current system's when we call Emit.
-        // Here we will override the start color and size.
-        var emitParams = new ParticleSystem.EmitParams();
+            // Any parameters we assign in emitParams will override the current system's when we call Emit.
+            // Here we will override the start color and size.
+            var emitParams = new ParticleSystem.EmitParams();
             emitParams.startColor = color;
             emitParams.startSize = size;
             emitParams.startLifetime = lifetime;
 
             system.Emit(emitParams, 10);
-           
+
         }
     }
 }

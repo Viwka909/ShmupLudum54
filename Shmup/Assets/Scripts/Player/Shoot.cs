@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && Time.time > canfire)
+        if (Input.GetKey(KeyCode.Z) && Time.time > canfire)
         {
             ShootAct();
             canfire = Time.time + firerate;
