@@ -41,9 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Timer
+  - name: AboveUi
     uniqueID: 632818057
     locked: 0
   - name: Cover
     uniqueID: 1627235901
+    locked: 0
+  - name: EnemiesPlayers
+    uniqueID: 867463417
     locked: 0

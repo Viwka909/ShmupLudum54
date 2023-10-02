@@ -64,6 +64,10 @@ public class ParticleSys : MonoBehaviour
 
             mainModule.simulationSpace = ParticleSystemSimulationSpace.World;
 
+            
+            var rend = system.GetComponent<Renderer>();
+
+            rend.sortingLayerName = "EnemyBullets";
 
 
             var form = system.shape;

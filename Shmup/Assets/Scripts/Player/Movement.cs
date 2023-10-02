@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
     public class Movement : MonoBehaviour
@@ -14,6 +15,10 @@ using UnityEngine;
         public float dashCd = 2f;
         public Collider2D hitbox;
         public SpriteRenderer playerSprite;
+        public Sprite playerLeft;
+        public Sprite playerRight;
+         public Sprite playerIdle;
+        public Image DodgeGauge;
         
 
         Vector2 movement;
@@ -112,6 +117,28 @@ using UnityEngine;
             {
                 moveSpeed = moveSpeedConst;
             }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                playerSprite.sprite = playerLeft;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                playerSprite.sprite = playerIdle;
+            }
+             if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                playerSprite.sprite = playerRight;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                playerSprite.sprite = playerIdle;
+            }
+            if(candash == false){
+                DodgeGauge.fillAmount += 1/ dashCd * Time.deltaTime;
+                if( DodgeGauge.fillAmount >= 1){
+                    DodgeGauge.fillAmount = 1;
+                }
+            }
         }
         void FixedUpdate()
         {
@@ -121,12 +148,14 @@ using UnityEngine;
         {
             hitbox.enabled = false;
             playerSprite.color = Color.blue;
+            DodgeGauge.fillAmount = 0;
             yield return new WaitForSeconds(dashTime);
             hitbox.enabled = true;
             playerSprite.color = Color.white;
             moveSpeed = moveSpeedConst;
             yield return new WaitForSeconds(dashCd);
             candash = true;
+            
             
         }
     }
