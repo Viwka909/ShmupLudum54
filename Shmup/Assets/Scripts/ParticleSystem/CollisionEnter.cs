@@ -5,6 +5,7 @@ using PlayerMovement;
 
 public class CollisionEnter : MonoBehaviour
 {
+
     void OnParticleCollision(GameObject other)
     {
         Debug.Log(123);

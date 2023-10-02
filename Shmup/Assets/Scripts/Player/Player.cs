@@ -14,11 +14,16 @@ public class Player : MonoBehaviour
     public GameObject[] Health = new GameObject[4];
     public GameObject HpPercent;
     public Sprite[] Percentage = new Sprite[4];
+    public AudioSource DamageSound;
+    public Animator Death;
+    public Animator GameOver;
+
     int count = 0;
    
 
     public void TakeDamage(int dmg)
     {
+        DamageSound.Play();
         hp -= dmg;
         Health[count].GetComponent<SpriteRenderer>().sprite = Damaged;
         HpPercent.GetComponent<SpriteRenderer>().sprite = Percentage[count];
@@ -26,26 +31,32 @@ public class Player : MonoBehaviour
         StartCoroutine(HurtInvul());
         if (hp <= 0)
         {
-            Die();
+           StartCoroutine(Die());
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
+        Death.SetTrigger("Death");
+        GameOver.SetTrigger("GameOver");
+        yield return new WaitForSeconds(0.35f);
         Destroy(gameObject);
     }
 
     IEnumerator HurtInvul(){
         hitbox.enabled = false;
-        Debug.Log("begin");
+        Physics2D.IgnoreLayerCollision(6,7,true);
         for (int i = 0; i < flashes; i++)
         {
+            Physics2D.IgnoreLayerCollision(6,7,true);
             playerSprite.color = new Color(1,1,1, 0.7f);
             yield return new WaitForSeconds(invulduration/flashes);
             playerSprite.color = Color.white;
+            Physics2D.IgnoreLayerCollision(6,7,true);
             yield return new WaitForSeconds(invulduration/flashes);
+            Physics2D.IgnoreLayerCollision(6,7,true);
         }
-        Debug.Log("end");
+        Physics2D.IgnoreLayerCollision(6,7,false);
         hitbox.enabled = true;
     }
 }

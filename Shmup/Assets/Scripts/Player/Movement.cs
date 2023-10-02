@@ -20,6 +20,7 @@ using UnityEngine.UI;
          public Sprite playerIdle;
         public Image DodgeGauge;
         public Animator Dodge;
+        public AudioSource DodgeSound;
         
 
         Vector2 movement;
@@ -147,12 +148,15 @@ using UnityEngine.UI;
         }
         IEnumerator DashReturn()
         {
+            DodgeSound.Play();
             Dodge.SetTrigger("Dodged");
+            Physics2D.IgnoreLayerCollision(6,7,true);
             hitbox.enabled = false;
             playerSprite.color = new Color(1,1,1,0.7f);
             DodgeGauge.fillAmount = 0;
             yield return new WaitForSeconds(dashTime);
             hitbox.enabled = true;
+            Physics2D.IgnoreLayerCollision(6,7,false);
             playerSprite.color = Color.white;
             moveSpeed = moveSpeedConst;
             yield return new WaitForSeconds(dashCd);

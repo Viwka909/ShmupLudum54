@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
@@ -11,6 +10,7 @@ public class Shoot : MonoBehaviour
     public GameObject WeapToggle;
     public Sprite ToggleOn;
     public Sprite ToggleOff;
+    public AudioSource Fire;
     
 
     float firerate = 0.2f;
@@ -43,6 +43,7 @@ public class Shoot : MonoBehaviour
 
     void ShootAct()
     {
+        Fire.Play();
         Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
     }
 
