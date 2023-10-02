@@ -19,6 +19,7 @@ using UnityEngine.UI;
         public Sprite playerRight;
          public Sprite playerIdle;
         public Image DodgeGauge;
+        public Animator Dodge;
         
 
         Vector2 movement;
@@ -109,11 +110,11 @@ using UnityEngine.UI;
                     dashcheck = 0;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 moveSpeed = 2f;
             }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            else if (Input.GetKeyUp(KeyCode.Z))
             {
                 moveSpeed = moveSpeedConst;
             }
@@ -146,8 +147,9 @@ using UnityEngine.UI;
         }
         IEnumerator DashReturn()
         {
+            Dodge.SetTrigger("Dodged");
             hitbox.enabled = false;
-            playerSprite.color = Color.blue;
+            playerSprite.color = new Color(1,1,1,0.7f);
             DodgeGauge.fillAmount = 0;
             yield return new WaitForSeconds(dashTime);
             hitbox.enabled = true;

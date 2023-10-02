@@ -20,7 +20,7 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if (toggle == true)
             {

@@ -41,11 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: AboveUi
-    uniqueID: 632818057
+  - name: EnemyBullets
+    uniqueID: 2995806603
     locked: 0
   - name: Cover
     uniqueID: 1627235901
+    locked: 0
+  - name: AboveUi
+    uniqueID: 632818057
+    locked: 0
+  - name: ClockCover
+    uniqueID: 4108062509
     locked: 0
   - name: EnemiesPlayers
     uniqueID: 867463417
