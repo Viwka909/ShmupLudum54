@@ -8,7 +8,7 @@ public class CollisionEnter : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log(123);
+        
         Player player = other.GetComponent<Player>();
         if (player != null)
         {

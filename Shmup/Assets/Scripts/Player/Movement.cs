@@ -11,7 +11,7 @@ using UnityEngine.UI;
         public float dashSpeed = 40f;
         public Rigidbody2D rb;
         public Camera cam;
-        public float dashTime = 0.1f;
+        public float dashTime = 0.5f;
         public float dashCd = 2f;
         public Collider2D hitbox;
         public SpriteRenderer playerSprite;
@@ -114,10 +114,13 @@ using UnityEngine.UI;
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 moveSpeed = 2f;
+                hitbox.GetComponent<BoxCollider2D>().size = new Vector2(35f,35f);
+
             }
             else if (Input.GetKeyUp(KeyCode.Z))
             {
                 moveSpeed = moveSpeedConst;
+                hitbox.GetComponent<BoxCollider2D>().size = new Vector2(100,80f);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -150,13 +153,13 @@ using UnityEngine.UI;
         {
             DodgeSound.Play();
             Dodge.SetTrigger("Dodged");
-            Physics2D.IgnoreLayerCollision(6,7,true);
+            Physics2D.IgnoreLayerCollision(6,10,true);
             hitbox.enabled = false;
             playerSprite.color = new Color(1,1,1,0.7f);
             DodgeGauge.fillAmount = 0;
             yield return new WaitForSeconds(dashTime);
             hitbox.enabled = true;
-            Physics2D.IgnoreLayerCollision(6,7,false);
+            Physics2D.IgnoreLayerCollision(6,10,false);
             playerSprite.color = Color.white;
             moveSpeed = moveSpeedConst;
             yield return new WaitForSeconds(dashCd);

@@ -48,15 +48,15 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6,7,true);
         for (int i = 0; i < flashes; i++)
         {
-            Physics2D.IgnoreLayerCollision(6,7,true);
+            Physics2D.IgnoreLayerCollision(6,10,true);
             playerSprite.color = new Color(1,1,1, 0.7f);
             yield return new WaitForSeconds(invulduration/flashes);
             playerSprite.color = Color.white;
-            Physics2D.IgnoreLayerCollision(6,7,true);
+            Physics2D.IgnoreLayerCollision(6,10,true);
             yield return new WaitForSeconds(invulduration/flashes);
-            Physics2D.IgnoreLayerCollision(6,7,true);
+            Physics2D.IgnoreLayerCollision(6,10,true);
         }
-        Physics2D.IgnoreLayerCollision(6,7,false);
+        Physics2D.IgnoreLayerCollision(6,10,false);
         hitbox.enabled = true;
     }
 }

@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(1,10,true);
         Rb.velocity = transform.up * speed;
     }
     void OnTriggerEnter2D(Collider2D hitInfo)
@@ -20,6 +21,12 @@ public class Bullet : MonoBehaviour
         {
             
             enemy.TakeDamage(dmg);
+        }
+        Boss boss = hitInfo.GetComponent<Boss>();
+        if (boss != null)
+        {
+            
+            boss.TakeDamage(dmg);
         }
         Destroy(gameObject);
     }

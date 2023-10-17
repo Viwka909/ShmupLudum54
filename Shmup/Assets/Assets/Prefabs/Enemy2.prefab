@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb959d89b53cb04b93f9e8d180f93a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 1
   DamageSound: {fileID: 3777271142922318160}
 --- !u!114 &3777271142922318166
 MonoBehaviour:

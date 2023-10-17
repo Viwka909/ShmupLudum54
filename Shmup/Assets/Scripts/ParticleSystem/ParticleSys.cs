@@ -37,9 +37,9 @@ public class ParticleSys : MonoBehaviour
 
             Material particleMaterial = material;
 
-            //поставить слой
+           
             var go = new GameObject("Particle System");
-            go.transform.Rotate(angle * i, 90, 0); // Rotate so the system emits upwards.
+            go.transform.Rotate(angle * i, 90, 0); 
             go.AddComponent<CollisionEnter>();
             go.transform.parent = this.transform;
             go.transform.position = this.transform.position;
