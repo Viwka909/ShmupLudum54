@@ -1701,7 +1701,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 452649493}
-        m_TargetAssemblyTypeName: MusicSlider, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: UpdateValueOnChange
         m_Mode: 0
         m_Arguments:
@@ -1721,12 +1721,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 452649490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1471c8f61fd635948bc9745b20e6a7d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f84a6fdd2527454298bb7bc9994d260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 148715693c9301c47a4e12eb86f9d485, type: 2}
   sliderName: SFX
-  _data: {fileID: 11400000, guid: be4a3b82f8d526141acaed4d1cfc7792, type: 2}
 --- !u!1 &453752337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5617,7 +5616,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1279645097}
-        m_TargetAssemblyTypeName: MusicSlider, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: UpdateValueOnChange
         m_Mode: 0
         m_Arguments:
@@ -5637,12 +5636,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1279645094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1471c8f61fd635948bc9745b20e6a7d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f84a6fdd2527454298bb7bc9994d260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 148715693c9301c47a4e12eb86f9d485, type: 2}
   sliderName: Music
-  _data: {fileID: 11400000, guid: 6bfa604b41fc2a04cadd566d7adb8356, type: 2}
 --- !u!1 &1280444698
 GameObject:
   m_ObjectHideFlags: 0
