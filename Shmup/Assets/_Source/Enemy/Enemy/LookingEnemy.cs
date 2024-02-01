@@ -17,7 +17,7 @@ public class LookingEnemy : MonoBehaviour
 
     void Start()
     {
-        target = GameObject.FindObjectOfType<Player>().transform;
+        target = GameObject.FindObjectOfType<PlayerSys.Player>().transform;
     }
     void Update()
     {

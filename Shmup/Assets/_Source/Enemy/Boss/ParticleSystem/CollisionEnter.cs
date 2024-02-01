@@ -9,7 +9,7 @@ public class CollisionEnter : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
         
-        Player player = other.GetComponent<Player>();
+        PlayerSys.Player player = other.GetComponent<PlayerSys.Player>();
         if (player != null)
         {
             player.TakeDamage(1);
