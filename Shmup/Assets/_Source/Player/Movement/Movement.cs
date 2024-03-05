@@ -17,32 +17,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private Sprite playerIdle;
 
 
-    public bool dashActive;
-    public Vector2 movement;
+    public bool DashActive = false;
+    public Vector2 MovementDir;
+    private Vector2 dashMovement;
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");//try hash(?)
-        movement.y = Input.GetAxisRaw("Vertical");//try hash(?)
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //dash  check probably
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            //dash  check probably
-
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            //dash  check probably
-
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            //dash  check probably
-
-        }
         if (Input.GetKeyDown(KeyCode.Z))//seperate into different class
         {
             moveSpeed = 2f;
@@ -74,7 +54,7 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + MovementDir * moveSpeed * Time.fixedDeltaTime);
     }
 }
 

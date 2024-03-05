@@ -15,7 +15,7 @@ namespace PlayerSys
 
         public void TakeDamage(int dmg)
         {
-            damage.TakeDamage(hp,this);
+            damage.TakeDamage(dmg,this);
             if (hp <= 0)
             {
                 StartCoroutine(Die());

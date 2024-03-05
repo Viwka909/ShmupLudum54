@@ -15,8 +15,11 @@ public class InputListener : MonoBehaviour
   }
   void Update()
   {
-    playerMovement.movement.x = Input.GetAxisRaw("Horizontal");
-    playerMovement.movement.y = Input.GetAxisRaw("Vertical");
+    if (playerMovement.DashActive == false)
+    {
+      playerMovement.MovementDir.x = Input.GetAxisRaw("Horizontal");
+      playerMovement.MovementDir.y = Input.GetAxisRaw("Vertical");
+    }
     if (Input.GetKeyDown(KeyCode.LeftShift))
     {
       dash.Dash();

@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c136096f307b2e14c9dac4343b2d714c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1237130063}
 --- !u!4 &245137484
 Transform:
   m_ObjectHideFlags: 0
@@ -782,7 +783,7 @@ MonoBehaviour:
   lifetime: 4
   firerate: 0.5
   size: 0.003
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: -15
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &267619196
@@ -1649,7 +1650,7 @@ MonoBehaviour:
   lifetime: 6
   firerate: 0.4
   size: 0.01
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: 10
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &452649490
@@ -2463,7 +2464,7 @@ MonoBehaviour:
   lifetime: 1
   firerate: 0.25
   size: 0.005
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: 50
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &532341481
@@ -3892,7 +3893,7 @@ MonoBehaviour:
   lifetime: 3
   firerate: 0.2
   size: 0.005
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: -10
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &900095043
@@ -4543,7 +4544,7 @@ MonoBehaviour:
   lifetime: 5
   firerate: 0.5
   size: 0.005
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: 50
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &1074819965
@@ -5328,6 +5329,7 @@ GameObject:
   - component: {fileID: 1237130068}
   - component: {fileID: 1237130067}
   - component: {fileID: 1237130066}
+  - component: {fileID: 1237130071}
   - component: {fileID: 1237130065}
   - component: {fileID: 1237130070}
   m_Layer: 6
@@ -5419,26 +5421,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17755033309eca943b05084c51bfca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 4
-  invulduration: 3
-  flashes: 3
-  hitbox: {fileID: 36326086}
-  playerSprite: {fileID: 1394691080}
-  Damaged: {fileID: 21300000, guid: 25f799faf165bfc4297c196b5845e3d1, type: 3}
+  damage: {fileID: 0}
+  Death: {fileID: 1237130070}
+  GameOver: {fileID: 1442817521}
   Health:
   - {fileID: 447451540}
   - {fileID: 1946119424}
   - {fileID: 483329999}
   - {fileID: 1532149957}
-  HpPercent: {fileID: 858237610}
-  Percentage:
-  - {fileID: 21300000, guid: e40e4c8e1ac914a4cb9a1d5a136a888c, type: 3}
-  - {fileID: 21300000, guid: 993f0e965151b6d4db4bd468b01f8351, type: 3}
-  - {fileID: 21300000, guid: f2fb61f3a84ab1747b8718ffe41677f0, type: 3}
-  - {fileID: 21300000, guid: e827e71e56879da47a7f5c208fa96340, type: 3}
-  DamageSound: {fileID: 532341483}
-  Death: {fileID: 1237130070}
-  GameOver: {fileID: 1442817521}
+  hp: 4
 --- !u!114 &1237130068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5453,19 +5444,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeedConst: 5
   moveSpeed: 5
-  dashSpeed: 20
   rb: {fileID: 1237130065}
-  cam: {fileID: 519420031}
-  dashTime: 0.2
-  dashCd: 2
   hitbox: {fileID: 36326086}
   playerSprite: {fileID: 1394691080}
   playerLeft: {fileID: 21300000, guid: 05e1b150afd9f4743b3f22b62503f93d, type: 3}
   playerRight: {fileID: 21300000, guid: ab8860507ba0a1c4db0579add70dea70, type: 3}
   playerIdle: {fileID: 21300000, guid: 47e6b7b7a2a159b40a63a1dc1514d7e7, type: 3}
-  DodgeGauge: {fileID: 453752339}
-  Dodge: {fileID: 1237130070}
-  DodgeSound: {fileID: 291914876}
+  DashActive: 0
+  MovementDir: {x: 0, y: 0}
 --- !u!114 &1237130069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5504,6 +5490,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1237130071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237130063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9386125045229543af14cc4e026f4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DodgeSound: {fileID: 291914876}
+  plrmovement: {fileID: 1237130068}
+  Dodge: {fileID: 1237130070}
+  hitbox: {fileID: 1237130066}
+  playerSprite: {fileID: 1394691080}
+  DodgeGauge: {fileID: 453752339}
+  dashTime: 0.15
+  dashCd: 2
+  dashSpeed: 15
+  candash: 1
 --- !u!1 &1252199551
 GameObject:
   m_ObjectHideFlags: 0
@@ -6334,7 +6342,7 @@ MonoBehaviour:
   lifetime: 3
   firerate: 0.5
   size: 0.01
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: 5
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &1466380973
@@ -6983,7 +6991,7 @@ MonoBehaviour:
   lifetime: 1
   firerate: 0.25
   size: 0.005
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: -50
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &1584415967
@@ -7227,7 +7235,7 @@ MonoBehaviour:
   lifetime: 10
   firerate: 1
   size: 0.003
-  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 3}
   spin_speed: 5
   system: {fileID: 8581330854009274255, guid: e81c56d7c87dd5848ace462ecede363f, type: 3}
 --- !u!1 &1614172790

@@ -33,7 +33,9 @@ namespace PlayerMovement
         {
             if (candash)
             {
-                plrmovement.dashActive = true;
+                candash = false;
+                plrmovement.DashActive = true;
+                plrmovement.moveSpeed = dashSpeed;
                 StartCoroutine(DashReturn());
             }
         }
@@ -46,7 +48,7 @@ namespace PlayerMovement
             playerSprite.color = new Color(1, 1, 1, 0.7f);
             DodgeGauge.fillAmount = 0;
             yield return new WaitForSeconds(dashTime);
-            plrmovement.dashActive = false;
+            plrmovement.DashActive = false;
             hitbox.enabled = true;
             Physics2D.IgnoreLayerCollision(6, 10, false);
             playerSprite.color = Color.white;
