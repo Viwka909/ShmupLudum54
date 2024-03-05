@@ -6,12 +6,14 @@ using UnityEngine;
 public class InputListener : MonoBehaviour
 {
   [SerializeField] private GameObject playerObject;
-  private Movement playerMovement;
-  private PlayerDash dash;
+  [SerializeField] private Movement playerMovement;
+  [SerializeField] private PlayerDash dash;
+  [SerializeField] private Shrink shrink;
   void Start()
   {
-    playerMovement = playerObject.GetComponent<Movement>();
+    /*playerMovement = playerObject.GetComponent<Movement>();
     dash = playerObject.GetComponent<PlayerDash>();
+    shrink = playerObject.GetComponent<Shrink>();*/
   }
   void Update()
   {
@@ -19,6 +21,14 @@ public class InputListener : MonoBehaviour
     {
       playerMovement.MovementDir.x = Input.GetAxisRaw("Horizontal");
       playerMovement.MovementDir.y = Input.GetAxisRaw("Vertical");
+      if (Input.GetKeyDown(KeyCode.Z))
+      {
+        shrink.StartShrink();
+      }
+      else if (Input.GetKeyUp(KeyCode.Z))
+      {
+        shrink.EndShrink();
+      }
     }
     if (Input.GetKeyDown(KeyCode.LeftShift))
     {

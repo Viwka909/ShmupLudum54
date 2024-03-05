@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Shrink : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Movement plrmovement;
+    [SerializeField] private float slowSpeed = 2f;
+    [SerializeField] private float shrinkedHitboxHeight = 35f;
+    [SerializeField] private float shrinkedHitboxWidth = 35f;
+    [SerializeField] private float normalHitboxHeight = 80f;
+    [SerializeField] private float normalHitboxWidth = 100f;
+    [SerializeField] private Collider2D hitbox;
 
-    // Update is called once per frame
-    void Update()
+    public void StartShrink()
     {
-        
+        plrmovement.moveSpeed = slowSpeed;
+        hitbox.GetComponent<BoxCollider2D>().size = new Vector2(shrinkedHitboxWidth, shrinkedHitboxHeight);
+    }
+    public void EndShrink()
+    {
+        plrmovement.moveSpeed = plrmovement.moveSpeedConst;
+        hitbox.GetComponent<BoxCollider2D>().size = new Vector2(normalHitboxWidth, normalHitboxHeight);
     }
 }
