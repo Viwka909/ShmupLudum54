@@ -10,22 +10,27 @@ public class MovementAnim : MonoBehaviour
     [SerializeField] private Sprite playerRight;
     [SerializeField] private Sprite playerIdle;
 
-
-
     public void MoveLeft()
     {
-          Debug.Log(playerSprite.sprite.name);
-        playerSprite.sprite = playerLeft;
-        Debug.Log(playerSprite.sprite.name);
+ 
+        if (playerSprite.sprite == playerIdle)
+        {
+            playerSprite.sprite = playerLeft;
+        }
     }
     public void MoveRight()
     {
-        playerSprite.sprite = playerRight;
+        if (playerSprite.sprite == playerIdle)
+        {
+            playerSprite.sprite = playerRight;
+        }
     }
     public void MoveIdle()
     {
         Debug.Log(123);
-        playerSprite.sprite = playerIdle;
+        if (playerSprite.sprite == playerRight || playerSprite.sprite == playerLeft)
+        {
+            playerSprite.sprite = playerRight;
+        }
     }
-
 }

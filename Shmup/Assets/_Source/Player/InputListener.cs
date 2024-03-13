@@ -20,21 +20,22 @@ public class InputListener : MonoBehaviour
 
     if (playerMovement.DashActive == false)
     {
-      if (Input.GetKeyDown(KeyCode.LeftArrow))//seperate into different class
+      if (Input.GetKeyDown(KeyCode.LeftArrow))
       {
+        Debug.Log(123);
         moveAnim.MoveLeft();
       }
-      else if (Input.GetKeyUp(KeyCode.LeftArrow))//seperate into different class
+      else if (Input.GetKeyUp(KeyCode.LeftArrow))
       {
         moveAnim.MoveIdle();
       }
-      if (Input.GetKeyDown(KeyCode.RightArrow))//seperate into different class
+      if (Input.GetKeyDown(KeyCode.RightArrow))
       {
         moveAnim.MoveRight();
       }
-      else if (Input.GetKeyUp(KeyCode.RightArrow))//seperate into different class
+      else if (Input.GetKeyUp(KeyCode.RightArrow))
       {
-        moveAnim.MoveIdle();
+       moveAnim.MoveIdle();
       }
       playerMovement.MovementDir.x = Input.GetAxisRaw("Horizontal");
       playerMovement.MovementDir.y = Input.GetAxisRaw("Vertical");
