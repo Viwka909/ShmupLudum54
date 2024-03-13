@@ -10,12 +10,12 @@ public class Shrink : MonoBehaviour
     [SerializeField] private float shrinkedHitboxWidth = 35f;
     [SerializeField] private float normalHitboxHeight = 80f;
     [SerializeField] private float normalHitboxWidth = 100f;
-    [SerializeField] private Collider2D hitbox;
+    [SerializeField] private Collider2D hitbox;//брать сразу коллайдер
 
     public void StartShrink()
     {
         plrmovement.moveSpeed = slowSpeed;
-        hitbox.GetComponent<BoxCollider2D>().size = new Vector2(shrinkedHitboxWidth, shrinkedHitboxHeight);
+        hitbox.GetComponent<BoxCollider2D>().size = new Vector2(shrinkedHitboxWidth, shrinkedHitboxHeight);//hash vectors
     }
     public void EndShrink()
     {

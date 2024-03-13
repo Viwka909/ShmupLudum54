@@ -9,18 +9,36 @@ public class InputListener : MonoBehaviour
   [SerializeField] private Movement playerMovement;
   [SerializeField] private PlayerDash dash;
   [SerializeField] private Shrink shrink;
+  [SerializeField] private MovementAnim moveAnim;
+
   void Start()
   {
-    /*playerMovement = playerObject.GetComponent<Movement>();
-    dash = playerObject.GetComponent<PlayerDash>();
-    shrink = playerObject.GetComponent<Shrink>();*/
+
   }
   void Update()
   {
+
     if (playerMovement.DashActive == false)
     {
+      if (Input.GetKeyDown(KeyCode.LeftArrow))//seperate into different class
+      {
+        moveAnim.MoveLeft();
+      }
+      else if (Input.GetKeyUp(KeyCode.LeftArrow))//seperate into different class
+      {
+        moveAnim.MoveIdle();
+      }
+      if (Input.GetKeyDown(KeyCode.RightArrow))//seperate into different class
+      {
+        moveAnim.MoveRight();
+      }
+      else if (Input.GetKeyUp(KeyCode.RightArrow))//seperate into different class
+      {
+        moveAnim.MoveIdle();
+      }
       playerMovement.MovementDir.x = Input.GetAxisRaw("Horizontal");
       playerMovement.MovementDir.y = Input.GetAxisRaw("Vertical");
+
       if (Input.GetKeyDown(KeyCode.Z))
       {
         shrink.StartShrink();
